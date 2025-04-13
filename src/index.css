@@ -1,0 +1,137 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;  /* Black background */
+    --foreground: 0 0% 100%; /* White text */
+
+    --card: 0 0% 3%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 157 100% 50%; /* Neon green */
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 150 100% 45%; /* Slightly darker green */
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 157 100% 50%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 157 100% 50%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-onethrive-black text-foreground scroll-smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-onethrive-black;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-onethrive-green/50 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-onethrive-green;
+  }
+
+  /* Special text styling */
+  .text-gradient {
+    @apply bg-text-gradient text-transparent bg-clip-text bg-[size:200%_auto];
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px rgba(0, 255, 133, 0.7), 0 0 20px rgba(0, 255, 133, 0.5);
+  }
+
+  .neon-border {
+    @apply border border-onethrive-green;
+    box-shadow: 0 0 5px #00FF85, 0 0 10px rgba(0, 255, 133, 0.5) inset;
+  }
+
+  .neon-btn {
+    @apply relative overflow-hidden bg-transparent border border-onethrive-green text-onethrive-green px-6 py-3 rounded-md transition-all duration-300;
+  }
+
+  .neon-btn:hover {
+    @apply text-black;
+    box-shadow: 0 0 10px #00FF85, 0 0 20px rgba(0, 255, 133, 0.5);
+  }
+
+  .neon-btn::before {
+    content: '';
+    @apply absolute top-0 left-0 w-0 h-full bg-onethrive-green transition-all duration-500 z-[-1];
+  }
+
+  .neon-btn:hover::before {
+    @apply w-full;
+  }
+
+  .service-card {
+    @apply bg-gradient-to-b from-gray-900 to-black p-6 rounded-lg border border-gray-800 
+           transition-all duration-500 overflow-hidden relative;
+  }
+
+  .service-card:hover {
+    @apply border-onethrive-green;
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 255, 133, 0.2);
+  }
+
+  .service-card::before {
+    content: '';
+    @apply absolute -inset-0.5 bg-onethrive-green/20 opacity-0 transition-opacity duration-500 rounded-lg blur-md;
+    z-index: -1;
+  }
+
+  .service-card:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Background with animated gradient effect */
+  .animated-gradient-bg {
+    background: linear-gradient(45deg, #000 0%, #0a1f1a 50%, #000 100%);
+    background-size: 200% 200%;
+    animation: gradientBackground 15s ease infinite;
+  }
+
+  @keyframes gradientBackground {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
